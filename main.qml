@@ -8,6 +8,7 @@ ApplicationWindow {
     height: 480
     title: qsTr("Hello World")
 
+    signal onButtonPress();
     menuBar: MenuBar {
         Menu {
             title: qsTr("File")
@@ -24,7 +25,10 @@ ApplicationWindow {
 
     MainForm {
         anchors.fill: parent
-        button1.onClicked: messageDialog.show(qsTr("Button 1 pressed"))
+        button1.onClicked: {
+            onButtonPress()
+            messageDialog.show(qsTr("Button 1 pressed"))
+        }
         button2.onClicked: messageDialog.show(qsTr("Button 2 pressed"))
     }
 
